@@ -1,0 +1,21 @@
+# pipelines/data-ci.yml
+
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.x'
+    displayName: 'Set up Python'
+
+  - script: | 
+      pip install pyspark
+      echo "Simulating Fabric notebook validation..."
+    displayName: 'Install dependencies and check notebooks'
+
+  - script: echo "CI pipeline executed successfully!"
+    displayName: 'Finish pipeline'
