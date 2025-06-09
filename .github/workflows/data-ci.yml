@@ -11,19 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: 🐍 Set up Python
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: 🔧 Install dependencies
+      - name: Install dependencies
         run: |
           pip install pyspark
 
-      - name: ✅ Simulate Fabric notebook validation
+      - name: Simulate Fabric notebook validation
         run: |
           echo "Running simulated validation..."
           echo "This is a placeholder for checking .ipynb or .py files"
