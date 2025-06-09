@@ -21,9 +21,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install pyspark
+          pip install nbformat nbconvert 
 
       - name: Simulate Fabric notebook validation
         run: |
-          echo "Running simulated validation..."
-          echo "This is a placeholder for checking .ipynb or .py files"
+          echo "Checking for valid .ipynb files..."
+          for file in $(find . -name '*.ipynb'); do
+            echo "Validating $file..."
+            jupyter nbconvert --log-level ERROR --to notebook --execute "$file" --stdout > /dev/null
+          done
