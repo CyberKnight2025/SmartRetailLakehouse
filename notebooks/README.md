@@ -37,6 +37,12 @@ This notebook performs **Gold layer aggregation** on the sales dataset. It:
 ---
 
 ## Local Testing & ADLS Gen2 Simulation
+To simulate a write operation without requiring ADLS Gen2 access: 
+```python 
+df.write.format("noop").mode("overwrite").save("noop")
+
+This configuration allows local validation of business logic without modifying cloud resources.
+
 If ADLS Gen2 write permissions are unavailable (common in personal or trial environments), the following local Spark configuration is used to simulate the notebook runs:
 ```python
 import os
